@@ -14,8 +14,17 @@ MonoBehaviour:
   id: RMOS
   title: Rebooting M-OS
   author: Lexa
-  description: Calculate 3-digit number based on moving color-cycling square and submit
-    it.
+  description: 'Calculate 3-digit number based on moving color-cycling square and
+    submit it.
+
+
+    Module ID: RebootingM-Os
+
+
+    Manual can be found in: ktane.timwi.de
+
+
+    Reserve manual: https://drive.google.com/file/d/1WTrAbFrlPMP_8m4XUXRsMeAaXD_6szRc/view?usp=sharing'
   version: 1.0.0
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 2c6c891ce1edff34bb98e8f9a4343530, type: 3}
