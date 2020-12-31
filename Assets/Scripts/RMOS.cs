@@ -91,14 +91,14 @@ public class RMOS : MonoBehaviour
         module.OnActivate += delegate
         {
             started = true;
-            Debug.LogFormat("[Rebooting M-Os #{0}] Shown colors: " + logcoloros[indexes[0]] + ", " + logcoloros[indexes[1]] + ", " + logcoloros[indexes[2]] + ", " + logcoloros[indexes[3]], _moduleID);
-            Debug.LogFormat("[Rebooting M-Os #{0}] Moves are: {1}, {2}, {3}, {4}", _moduleID, logmoves[rotindexes[0]], logmoves[rotindexes[1]], logmoves[rotindexes[2]], logmoves[rotindexes[3]]);
+            Debug.LogFormat("[Rebooting M-OS #{0}] Shown colors: " + logcoloros[indexes[0]] + ", " + logcoloros[indexes[1]] + ", " + logcoloros[indexes[2]] + ", " + logcoloros[indexes[3]], _moduleID);
+            Debug.LogFormat("[Rebooting M-OS #{0}] Moves are: {1}, {2}, {3}, {4}", _moduleID, logmoves[rotindexes[0]], logmoves[rotindexes[1]], logmoves[rotindexes[2]], logmoves[rotindexes[3]]);
             StartCoroutine(colorC());
             A = (table1[indexes[0] * 8 + rotindexes[0]] + table1[indexes[0] * 8 + rotindexes[1]] + table1[indexes[0] * 8 + rotindexes[2]] + table1[indexes[0] * 8 + rotindexes[3]]
                 + table1[indexes[1] * 8 + rotindexes[0]] + table1[indexes[1] * 8 + rotindexes[1]] + table1[indexes[1] * 8 + rotindexes[2]] + table1[indexes[1] * 8 + rotindexes[3]]
                 + table1[indexes[2] * 8 + rotindexes[0]] + table1[indexes[2] * 8 + rotindexes[1]] + table1[indexes[2] * 8 + rotindexes[2]] + table1[indexes[2] * 8 + rotindexes[3]]
                 + table1[indexes[3] * 8 + rotindexes[0]] + table1[indexes[3] * 8 + rotindexes[1]] + table1[indexes[3] * 8 + rotindexes[2]] + table1[indexes[3] * 8 + rotindexes[3]]) % 1000;
-            Debug.LogFormat("[Rebooting M-Os #{0}] Value A is {1}", _moduleID, A);
+            Debug.LogFormat("[Rebooting M-OS #{0}] Value A is {1}", _moduleID, A);
             while (A < 0)
             {
                 A += 1000;
@@ -147,9 +147,9 @@ public class RMOS : MonoBehaviour
             {
                 B += 1000;
             }
-            Debug.LogFormat("[Rebooting M-Os #{0}] Value B is {1}", _moduleID, B);
+            Debug.LogFormat("[Rebooting M-OS #{0}] Value B is {1}", _moduleID, B);
             ttp = (A + B) % 10;         
-            Debug.LogFormat("[Rebooting M-Os #{0}] Background colors was: {1}, {2}", _moduleID, blindAcoloros[Aindexes[0]], blindAcoloros[Aindexes[1]]);
+            Debug.LogFormat("[Rebooting M-OS #{0}] Background colors was: {1}, {2}", _moduleID, blindAcoloros[Aindexes[0]], blindAcoloros[Aindexes[1]]);
             sn = GetComponent<KMBombInfo>().GetSerialNumberNumbers().Last();
             if (sn == 0)
             {
@@ -165,7 +165,7 @@ public class RMOS : MonoBehaviour
                     C = colorValues[i];
                 }
             }
-            Debug.LogFormat("[Rebooting M-Os #{0}] Value C is {1}", _moduleID, C);
+            Debug.LogFormat("[Rebooting M-OS #{0}] Value C is {1}", _moduleID, C);
             if (A == 0)
             {
                 A = 1;
@@ -216,7 +216,7 @@ public class RMOS : MonoBehaviour
             {
                 Final += 100;
             }
-            Debug.LogFormat("[Rebooting M-Os #{0}] Correct setting is {1}", _moduleID, Final);
+            Debug.LogFormat("[Rebooting M-OS #{0}] Correct setting is {1}", _moduleID, Final);
         };     
     }
     // Use this for initialization
@@ -433,7 +433,7 @@ public class RMOS : MonoBehaviour
     
     IEnumerator Anim()
     {
-        Debug.LogFormat("[Rebooting M-Os #{0}] Rebooting module with {1} setting", _moduleID, answer[0]);
+        Debug.LogFormat("[Rebooting M-OS #{0}] Rebooting module with {1} setting", _moduleID, answer[0]);
         sfx.PlaySoundAtTransform("turnOff1", transform);
         button.gameObject.SetActive(false);
         surface.GetComponent<MeshRenderer>().material.color = new Color(0f, 0f, 0f);
@@ -482,7 +482,7 @@ public class RMOS : MonoBehaviour
         yield return new WaitForSeconds(3f);
         if (answer[0] != Final)
         {
-            Debug.LogFormat("[Rebooting M-Os #{0}] Incorrect reboot setting! Fatal error appeared.", _moduleID);
+            Debug.LogFormat("[Rebooting M-OS #{0}] Incorrect reboot setting! Fatal error appeared.", _moduleID);
             sf.Stop();
             sf.clip = buttonP;
             sf.volume = 1f;
@@ -502,7 +502,7 @@ public class RMOS : MonoBehaviour
         }
         else if(answer[0] == Final)
         {
-            Debug.LogFormat("[Rebooting M-Os #{0}] Module rebooted, all fine.", _moduleID);
+            Debug.LogFormat("[Rebooting M-OS #{0}] Module rebooted, all fine.", _moduleID);
             sf.Stop();
             sf.clip = buttonP;
             sf.volume = 1f;
