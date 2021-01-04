@@ -320,12 +320,12 @@
                         </tr>
                         <tr>
                             <td>White</td>
-                            <th>A<sub>n</sub> = 2n<sup>2</sup> - (A * E)</th>
+                            <th>A<sub>n</sub> = 2n<sup>2</sup> - (A<sub>n-1</sub> * E)</th>
                         </tr>
                     </table>
                     <p><i>E = sum of serial number digits.</i></p>
-                    <p><i>n = current step of the sequence.</i></p>
-                    <p><i>A<sub>n-1</sub> is the previous modified A value.</i></p>
+                    <p><i>n = current step of the sequence, starting from 1.</i></p>
+                    <p><i>A<sub>n-1</sub> is the previous modified A value or your initial value A, if n=1.</i></p>
                 </div>
                 <div class="page-footer relative-footer">Page 2 of 4</div>
             </div>
@@ -455,7 +455,7 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>2A - (C % B)</td>
+                            <td>2A - (B % C)</td>
                             <td>8</td>
                             <td>A* B * C</td>
                         </tr>

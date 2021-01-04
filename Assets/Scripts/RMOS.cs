@@ -186,7 +186,7 @@ public class RMOS : MonoBehaviour
                     Final = Convert.ToInt32(Mathf.Pow(B, 2)) - (A + C);
                     break;
                 case 3:
-                    Final = A * 2 - (C % B);
+                    Final = A * 2 - (B % C);
                     break;
                 case 4:
                     Final = (A * B) % C;
