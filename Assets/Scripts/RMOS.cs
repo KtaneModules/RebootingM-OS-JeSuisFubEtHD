@@ -222,14 +222,14 @@ public class RMOS : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        status.OnInteract += delegate { StartCoroutine(statusP()); return false; };
-        button.OnInteract += delegate {button.AddInteractionPunch(); interact();  return false; };
+        status.OnInteract += delegate {StartCoroutine(statusP()); return false; };
+        button.OnInteract += delegate { if (doin || !started || anim) { return false; } button.AddInteractionPunch(); interact();  return false; };
     }
 
     // Update is called once per frame
     void interact()
     {
-        if (anim)
+        if (doin || !started || anim)
         {
             return;
         }
