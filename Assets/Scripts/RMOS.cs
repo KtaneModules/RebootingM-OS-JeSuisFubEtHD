@@ -443,7 +443,7 @@ public class RMOS : MonoBehaviour
             }
         }
         button.gameObject.SetActive(false);
-        button.transform.localPosition -= new Vector3(0f, 0.002f, 0f);
+        button.transform.localPosition = new Vector3(0.0646f, -0.0022f, -0.0613f);
         yield return new WaitForSeconds(1f);
         if (!doin && !anim)
         {
