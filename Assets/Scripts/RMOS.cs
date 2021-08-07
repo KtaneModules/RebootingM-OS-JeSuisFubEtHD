@@ -337,84 +337,110 @@ public class RMOS : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-
+            float RandomPosFactor;
+            float elapsed;
+            float duration = 1.8f;
             rotindex = rotindexes[i];
             index = indexes[i];
             colortext.text = blindcoloros[index];
             button.GetComponent<MeshRenderer>().material.color = new Color(reds[index], greens[index], blues[index]);
-            if (rotindex == 0)
+            switch (rotindex)
             {
-                button.transform.localPosition = new Vector3(rnd.Range(-0.06f, 0.02f), 0.0058f, -0.06f);
-                while (button.transform.localPosition.z <= 0.06f)
-                {
-                    button.transform.localPosition += new Vector3(0f, 0f, 0.001f);
-                    yield return new WaitForSeconds(0.001f);
-                }
-            }
-            else if (rotindex == 1)
-            {
-                button.transform.localPosition = new Vector3(rnd.Range(-0.06f, 0.02f), 0.0058f, 0.06f);
-                while (button.transform.localPosition.z >= -0.06f)
-                {
-                    button.transform.localPosition += new Vector3(0f, 0f, -0.001f);
-                    yield return new WaitForSeconds(0.001f);
-                }
-            }
-            else if (rotindex == 2)
-            {
-                button.transform.localPosition = new Vector3(-0.06f, 0.0058f, rnd.Range(-0.06f, 0.03f));
-                while (button.transform.localPosition.x <= 0.06f)
-                {
-                    button.transform.localPosition += new Vector3(0.001f, 0f, 0f);
-                    yield return new WaitForSeconds(0.001f);
-                }
-            }
-            else if (rotindex == 3)
-            {
-                button.transform.localPosition = new Vector3(0.06f, 0.0058f, rnd.Range(-0.06f, 0.03f));
-                while (button.transform.localPosition.x >= -0.06f)
-                {
-                    button.transform.localPosition += new Vector3(-0.001f, 0f, 0f);
-                    yield return new WaitForSeconds(0.001f);
-                }
-            }
-            else if (rotindex == 4)
-            {
-                button.transform.localPosition = new Vector3(0.035f, 0.0058f, 0.035f);
-                while (button.transform.localPosition.x >= -0.06f && button.transform.localPosition.z >= -0.06f)
-                {
-                    button.transform.localPosition += new Vector3(-0.001f, 0f, -0.001f);
-                    yield return new WaitForSeconds(0.001f);
-                }
-            }
-            else if (rotindex == 5)
-            {
-                button.transform.localPosition = new Vector3(-0.06f, 0.0058f, -0.06f);
-                while (button.transform.localPosition.x <= 0.035f && button.transform.localPosition.z <= 0.035f)
-                {
-                    button.transform.localPosition += new Vector3(0.001f, 0f, 0.001f);
-                    yield return new WaitForSeconds(0.001f);
-                }
-            }
-            else if (rotindex == 6)
-            {
-                button.transform.localPosition = new Vector3(-0.06f, 0.0058f, 0.06f);
-                while (button.transform.localPosition.x <= 0.06f && button.transform.localPosition.z >= -0.06f)
-                {
-                    button.transform.localPosition += new Vector3(0.001f, 0f, -0.001f);
-                    yield return new WaitForSeconds(0.001f);
-                }
-            }
-            else if (rotindex == 7)
-            {
-                button.transform.localPosition = new Vector3(0.06f, 0.0058f, -0.06f);
-                while (button.transform.localPosition.x >= -0.06f && button.transform.localPosition.z <= 0.06f)
-                {
-                    button.transform.localPosition += new Vector3(-0.001f, 0f, 0.001f);
-                    yield return new WaitForSeconds(0.001f);
-                }
-            }
+                case 0:
+                    RandomPosFactor = rnd.Range(-0.06f, 0.02f);
+                    button.transform.localPosition = new Vector3(RandomPosFactor, 0.0058f, -0.06f);
+                    elapsed = 0f;
+                    while (elapsed < duration)
+                    {
+                        float t = elapsed / duration;
+                        button.transform.localPosition = new Vector3(RandomPosFactor, 0.0058f, Mathf.Lerp(-0.06f, 0.06f, t));
+                        yield return null;
+                        elapsed += Time.deltaTime;
+                    }
+                    break;
+                case 1:
+                    RandomPosFactor = rnd.Range(-0.06f, 0.02f);
+                    button.transform.localPosition = new Vector3(RandomPosFactor, 0.0058f, 0.06f);
+                    elapsed = 0f;
+                    while (elapsed < duration)
+                    {
+                        float t = elapsed / duration;
+                        button.transform.localPosition = new Vector3(RandomPosFactor, 0.0058f, Mathf.Lerp(0.06f, -0.06f, t));
+                        yield return null;
+                        elapsed += Time.deltaTime;
+                    }
+                    break;
+                case 2:
+                    RandomPosFactor = rnd.Range(-0.06f, 0.03f);
+                    button.transform.localPosition = new Vector3(-0.06f, 0.0058f, RandomPosFactor);
+                    elapsed = 0f;
+                    while (elapsed < duration)
+                    {
+                        float t = elapsed / duration;
+                        button.transform.localPosition = new Vector3(Mathf.Lerp(-0.06f, 0.06f, t), 0.0058f, RandomPosFactor);
+                        yield return null;
+                        elapsed += Time.deltaTime;
+                    }
+                    break;
+                case 3:
+                    RandomPosFactor = rnd.Range(-0.06f, 0.03f);
+                    button.transform.localPosition = new Vector3(0.06f, 0.0058f, RandomPosFactor);
+                    elapsed = 0f;
+                    while (elapsed < duration)
+                    {
+                        float t = elapsed / duration;
+                        button.transform.localPosition = new Vector3(Mathf.Lerp(0.06f, -0.06f, t), 0.0058f, RandomPosFactor);
+                        yield return null;
+                        elapsed += Time.deltaTime;
+                    }
+                    break;
+                case 4:
+                    button.transform.localPosition = new Vector3(0.035f, 0.0058f, 0.035f);
+                    elapsed = 0f;
+                    while (elapsed < duration)
 
+                    {
+                        float t = elapsed / duration;
+                        button.transform.localPosition = new Vector3(Mathf.Lerp(0.035f, -0.06f, t), 0.0058f, Mathf.Lerp(0.035f, -0.06f, t));
+                        yield return null;
+                        elapsed += Time.deltaTime;
+                    }
+                    break;
+                case 5:
+                    button.transform.localPosition = new Vector3(-0.06f, 0.0058f, -0.06f);
+                    elapsed = 0f;
+                    while (elapsed < duration)
+                    {
+                        float t = elapsed / duration;
+                        button.transform.localPosition = new Vector3(Mathf.Lerp(-0.06f, 0.035f, t), 0.0058f, Mathf.Lerp(-0.06f, 0.035f, t));
+                        yield return null;
+                        elapsed += Time.deltaTime;
+                    }
+                    break;
+                case 6:
+                    button.transform.localPosition = new Vector3(-0.06f, 0.0058f, 0.06f);
+                    elapsed = 0f;
+                    while (elapsed < duration)
+                    {
+                        float t = elapsed / duration;
+                        button.transform.localPosition = new Vector3(Mathf.Lerp(-0.06f, 0.06f, t), 0.0058f, Mathf.Lerp(0.06f, -0.06f, t));
+                        yield return null;
+                        elapsed += Time.deltaTime;
+                    }
+                    break;
+                case 7:
+
+                    button.transform.localPosition = new Vector3(0.06f, 0.0058f, -0.06f);
+                    elapsed = 0f;
+                    while (elapsed < duration)
+                    {
+                        float t = elapsed / duration;
+                        button.transform.localPosition = new Vector3(Mathf.Lerp(0.06f, -0.06f, t), 0.0058f, Mathf.Lerp(-0.06f, 0.06f, t));
+                        yield return null;
+                        elapsed += Time.deltaTime;
+                    }
+                    break;
+            }
         }
         button.gameObject.SetActive(false);
         button.transform.localPosition -= new Vector3(0f, 0.002f, 0f);
